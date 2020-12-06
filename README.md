@@ -1,4 +1,4 @@
-#SDA AUTOMATION TESTING PRACTICAL EXERCISES
+# SDA AUTOMATION TESTING PRACTICAL EXERCISES
 
 
 In this repository you will find all exercises that were created during the courses.
