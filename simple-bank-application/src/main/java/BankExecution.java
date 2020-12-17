@@ -3,12 +3,6 @@ import model.Transaction;
 
 public class BankExecution {
 
-    //todo 1: create method to display all transactions from the bank
-    //todo 2: create method to display all "depunere" transactions from the bank
-    //todo 3: create method to display all "retragere" transactions from the bank
-    //todo 4: create method to display how many transactions have been made with the value above 5000
-
-
     public static void main(String[] args) {
         Bank myBank = new Bank("Piscoteala");
 
@@ -21,5 +15,25 @@ public class BankExecution {
         secondTransaction.setType("Retragere");
         secondTransaction.setValue(5001);
         myBank.makeTransaction(secondTransaction);
+
+        Transaction thirdTransaction = new Transaction();
+        thirdTransaction.setType("Depunere");
+        thirdTransaction.setValue(5844.69);
+        myBank.makeTransaction(thirdTransaction);
+
+        Transaction fourthTransaction = new Transaction();
+        fourthTransaction.setType("Depunere");
+        fourthTransaction.setValue(87845.54);
+        myBank.makeTransaction(fourthTransaction);
+
+        Transaction fifthTransaction = new Transaction();
+        fifthTransaction.setType("Retragere");
+        fifthTransaction.setValue(90000);
+        myBank.makeTransaction(fifthTransaction);
+
+        myBank.displayTransactionsAboveLimit();
+
+
+        myBank.displayTransactionsType();
     }
 }
