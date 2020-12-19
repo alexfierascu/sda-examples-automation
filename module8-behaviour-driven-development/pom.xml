@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>modue8-behaviour-driven-development</artifactId>
+    <artifactId>module8-behaviour-driven-development</artifactId>
 
     <properties>
         <cucumber.version>6.9.1</cucumber.version>
