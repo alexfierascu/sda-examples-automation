@@ -12,6 +12,8 @@
         <module>module7-unit-testing</module>
         <module>module3-basics-of-java</module>
         <module>simple-bank-application</module>
+        <module>module8-bdd</module>
+        <module>modue8-behaviour-driven-development</module>
     </modules>
 
     <properties>
