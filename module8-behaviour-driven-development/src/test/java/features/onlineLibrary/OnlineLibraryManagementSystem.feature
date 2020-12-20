@@ -23,7 +23,7 @@ Feature: Online Library Management System
 
 
   Scenario Outline: Verify that a book is available in stock
-    Given the online library system is working
+    Given I have a list of books in the library
     When the librarian searches for the book with title <bookTitle>
     Then the book has status <status>
     Examples:
@@ -37,7 +37,8 @@ Feature: Online Library Management System
 
 
   Scenario Outline: Verify number of available copies of a book in the library
-    Given the user searches for the book with title <bookTitle>
+    Given I have a list of books in the library
+    And the user searches for the book with title <bookTitle>
     When he finds the book in the system and checks the number of copies
     Then he finds out that there are <bookCopies> books with the title <bookTitle> in the library
     Examples:

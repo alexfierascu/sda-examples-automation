@@ -2,6 +2,7 @@ package model;
 
 import lombok.Getter;
 import lombok.Setter;
+import util.BookUtilities;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,5 +33,22 @@ public class Library {
             flag = false;
         }
         return flag;
+    }
+
+    public boolean findBookByTitle(String expectedTitle) {
+        boolean flag = false;
+        for (Book myBook : bookList) {
+            String actualBookTitle = myBook.getBookTitle();
+            if (actualBookTitle == expectedTitle) {
+                flag = true;
+            } else {
+                flag = false;
+            }
+        }
+        return flag;
+    }
+
+    public void addAllBooksToLibrary() {
+        bookList.addAll(BookUtilities.readBooksFromFile());
     }
 }

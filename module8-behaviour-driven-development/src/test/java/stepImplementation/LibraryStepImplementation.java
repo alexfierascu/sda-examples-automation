@@ -7,7 +7,6 @@ import io.cucumber.java.en.When;
 import model.Book;
 import model.Library;
 
-import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 public class LibraryStepImplementation {
@@ -65,4 +64,21 @@ public class LibraryStepImplementation {
         boolean isBookInTheLibrary = myLibrary.searchBookByID(carte, id);
         assertTrue(isBookInTheLibrary);
     }
+
+    @Given("I have a list of books in the library")
+    public void iHaveThePreviousListOfBooksInTheLibrary() {
+        myLibrary.addAllBooksToLibrary();
+    }
+
+    @When("^the librarian searches for the book with title (.*)$")
+    public void theLibrarianSearchesForTheBookWithTitleBookTitle(String title) {
+        boolean hasTheBookBeenFoundInTheLibraryByName = myLibrary.findBookByTitle(title);
+        assertTrue(hasTheBookBeenFoundInTheLibraryByName);
+    }
+
+    @Then("^the book has status (.*)$")
+    public void theBookHasStatusStatus(String status) {
+    }
+
+
 }
