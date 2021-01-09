@@ -5,7 +5,10 @@ import lombok.Setter;
 import util.BookUtilities;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Getter
 @Setter
@@ -37,6 +40,7 @@ public class Library {
 
     public boolean findBookByTitle(String expectedTitle) {
         boolean flag = false;
+        
         for (Book myBook : bookList) {
             String actualBookTitle = myBook.getBookTitle();
             if (actualBookTitle == expectedTitle) {
@@ -48,7 +52,13 @@ public class Library {
         return flag;
     }
 
-    public void addAllBooksToLibrary() {
-        bookList.addAll(BookUtilities.readBooksFromFile());
+    public List<Book> addAllBooksToLibrary() {
+        List<Book> booksFromFile = BookUtilities.loadBooks();
+
+        bookList = Stream.of(booksFromFile)
+                .flatMap(Collection::stream)
+                .collect(Collectors.toList());
+        return bookList;
+
     }
 }

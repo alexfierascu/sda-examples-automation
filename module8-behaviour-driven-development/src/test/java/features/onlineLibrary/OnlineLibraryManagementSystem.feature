@@ -29,10 +29,10 @@ Feature: Online Library Management System
     Examples:
       | bookTitle                                         | status      |
       | Art of programming calculators                    | available   |
-      | Clean Code                                        | unavailable |
+      | Clean Code                                        | available |
       | Cracking the Coding Interview                     | available   |
       | Refactoring                                       | available   |
-      | Structure and Interpretation of Computer Programs | unavailable |
+      | Structure and Interpretation of Computer Programs | available |
       | The Pragmatic Programmer                          | unavailable |
 
 

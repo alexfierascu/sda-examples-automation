@@ -7,11 +7,15 @@ import io.cucumber.java.en.When;
 import model.Book;
 import model.Library;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.Assert.assertTrue;
 
 public class LibraryStepImplementation {
     Library myLibrary = new Library("Carturesti");
     Book carte = new Book();
+    List<Book> finalBookList = new ArrayList<>();
 
     @Given("^the online library is working$")
     public void theOnlineLibrarySystemIsWorking() {
@@ -67,7 +71,7 @@ public class LibraryStepImplementation {
 
     @Given("I have a list of books in the library")
     public void iHaveThePreviousListOfBooksInTheLibrary() {
-        myLibrary.addAllBooksToLibrary();
+        finalBookList=  myLibrary.addAllBooksToLibrary();
     }
 
     @When("^the librarian searches for the book with title (.*)$")

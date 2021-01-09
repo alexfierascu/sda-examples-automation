@@ -13,6 +13,8 @@
         <module>module3-basics-of-java</module>
         <module>simple-bank-application</module>
         <module>module8-behaviour-driven-development</module>
+        <module>cracking-the-automation-tester-interview</module>
+        <module>module9-selenium</module>
     </modules>
 
     <properties>
