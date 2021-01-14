@@ -1,8 +1,12 @@
 package beginner;
 
-public class ProblemaCeva {
+//https://edabit.com/challenge/BxnxYJGQ9MMQn2EfR.
+
+public class ProblemUserHasPassedExamOrNot {
     public static void main(String[] args) {
         System.out.println(gradePercentage("85 %", "85 %"));
+        System.out.println(gradePercentage("85 %", "95 %"));
+        System.out.println(gradePercentage("65 %", "85 %"));
     }
 
     public static String gradePercentage(String userScore, String passScore) {
