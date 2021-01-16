@@ -1,4 +1,4 @@
-package model;
+package emag.model;
 
 import lombok.Getter;
 import lombok.Setter;

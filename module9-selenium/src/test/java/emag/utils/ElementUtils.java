@@ -1,4 +1,4 @@
-package utils;
+package emag.utils;
 
 import org.openqa.selenium.WebElement;
 

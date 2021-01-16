@@ -1,4 +1,4 @@
-package model;
+package emag.model;
 
 public class Product {
 }
