@@ -29,6 +29,8 @@ public class MainPage {
     private WebElement buttonBasketShopping;
     @FindBy(xpath = "//*[@id=\"header\"]/div[2]/div[1]/a[2]/img")
     private WebElement logo;
+    @FindBy(xpath = "//*[@id=\"header\"]/div[3]/div/nav/ul/li[1]/a")
+    private WebElement buttonNoutati;
 
     public boolean checkThatIamOnMainPage() {
         if (getButtonSearch().isDisplayed() && getButtonFavorite().isDisplayed() &&
@@ -40,7 +42,4 @@ public class MainPage {
         }
     }
 
-    public void navigateToLoginPage() {
-        buttonLogin.click();
-    }
 }
