@@ -1,4 +1,4 @@
-package depurtat.pages;
+package depurtat.page;
 
 import lombok.Getter;
 import org.openqa.selenium.WebDriver;
@@ -17,6 +17,8 @@ public class MainPage {
 
     private String title = "dEpurtat - Cel mai bun raport calitate/preț la încălțăminte de damă";
 
+
+    //PageFactory locator strategy
     @FindBy(xpath = "//*[@id=\"header\"]/div[2]/div[1]/div/div[1]/a")
     private WebElement buttonSearch;
     @FindBy(xpath = "//*[@id=\"header\"]/div[2]/div[1]/div/a[2]/span[1]")
@@ -27,7 +29,6 @@ public class MainPage {
     private WebElement buttonBasketShopping;
     @FindBy(xpath = "//*[@id=\"header\"]/div[2]/div[1]/a[2]/img")
     private WebElement logo;
-
 
     public boolean checkThatIamOnMainPage() {
         if (getButtonSearch().isDisplayed() && getButtonFavorite().isDisplayed() &&
@@ -42,6 +43,4 @@ public class MainPage {
     public void navigateToLoginPage() {
         buttonLogin.click();
     }
-
-
 }

@@ -1,4 +1,4 @@
-package depurtat.pages;
+package depurtat.page;
 
 import lombok.Getter;
 import org.openqa.selenium.WebDriver;

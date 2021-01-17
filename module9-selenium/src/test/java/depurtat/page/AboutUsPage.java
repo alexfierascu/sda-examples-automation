@@ -1,4 +1,4 @@
-package depurtat.pages;
+package depurtat.page;
 
 public class AboutUsPage {
 }
