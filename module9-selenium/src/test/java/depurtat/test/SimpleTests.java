@@ -1,10 +1,7 @@
 package depurtat.test;
 
 
-import depurtat.page.FavouritePage;
-import depurtat.page.LoginPage;
-import depurtat.page.MainPage;
-import depurtat.page.NoutatiPage;
+import depurtat.page.*;
 import depurtat.utils.NavigationUtils;
 import org.junit.jupiter.api.*;
 import org.openqa.selenium.WebDriver;
@@ -12,17 +9,20 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import static depurtat.utils.CategoryId.GHETE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class SimpleTests {
+    String baseURL = "https://www.depurtat.ro/";
     WebDriver driver; // declarare de un obiect de tip WebDriver
     MainPage mainPage;
     LoginPage loginPage;
     NavigationUtils navigationUtils;
     NoutatiPage noutatiPage;
     FavouritePage favouritePage;
+    ProfilePage profilePage;
 
     @BeforeEach
     public void setup() {
@@ -33,13 +33,14 @@ public class SimpleTests {
         navigationUtils = new NavigationUtils(driver);
         noutatiPage = new NoutatiPage(driver);
         favouritePage = new FavouritePage(driver);
+        profilePage = new ProfilePage(driver);
         driver.manage().window().maximize();
-        driver.get("https://www.depurtat.ro/");
+        driver.get(baseURL);
     }
 
     @AfterEach
     public void tearDown() {
-        //   driver.quit();
+        driver.quit();
     }
 
     @Test
@@ -71,7 +72,8 @@ public class SimpleTests {
         loginPage.inputUserNameAndPassword(user, password);
         assertEquals(driver.getTitle(), titleUserPage);
         assertEquals(driver.getCurrentUrl(), "https://www.depurtat.ro/profile");
-        //todo - logout
+        profilePage.logoutFromAccount();
+        assertEquals(driver.getCurrentUrl(), baseURL);
     }
 
     @Test
@@ -99,16 +101,16 @@ public class SimpleTests {
 
     @Test
     @Order(5)
-    public void checkThatUserIsAbleToSorProductFromNoutatiPageOrderBy() throws InterruptedException {
+    public void checkThatUserIsAbleToSortProductsFromNoutatiPage() throws InterruptedException {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         navigationUtils.navigateToNoutatiPage();
-        noutatiPage.getDropdownCategorii().click();
-        noutatiPage.getCheckboxGhete().click();
-//        navigationUtils.navigateToFavouritePage();
-//        int counterFavouriteProducts = 4;
-//        assertEquals(noutatiPage.getNumberOfFavouriteProducts(), counterFavouriteProducts);
-//        favouritePage.deleteMultipleProductsFromFavouritesList();
-//        wait.until(ExpectedConditions.visibilityOf(noutatiPage.getButtonAllFavouriteProducts()));
-//        assertEquals(noutatiPage.getNumberOfFavouriteProducts(), 2);
+        noutatiPage.selectFirstCategoryFromFreshArrivalsPage();
+        String currentUrlurl = driver.getCurrentUrl();
+        //assertTrue(currentUrlurl.contains(String.valueOf(noutatiPage.selectFirstCategoryFromFreshArrivalsPage())));
+        if (currentUrlurl.contains(String.valueOf(GHETE))) {
+            System.out.println("ok");
+        } else {
+            System.out.println("not ok");
+        }
     }
 }

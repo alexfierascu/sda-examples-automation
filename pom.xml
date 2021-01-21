@@ -15,6 +15,7 @@
         <module>module8-behaviour-driven-development</module>
         <module>cracking-the-automation-tester-interview</module>
         <module>module9-selenium</module>
+        <module>module11-api-testing</module>
     </modules>
 
     <properties>

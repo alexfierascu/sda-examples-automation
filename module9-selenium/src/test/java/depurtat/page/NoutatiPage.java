@@ -36,8 +36,10 @@ public class NoutatiPage {
     private WebElement buttonAllFavouriteProducts;
     @FindBy(xpath = "//*[@id=\"page_top_box_product_filters_content\"]/div[1]/div/button")
     private WebElement dropdownCategorii;
-    @FindBy(xpath = "//*[@id=\"page_top_box_cat_cat_content\"]/div[2]/div/ul/li[1]/div/a")
-    private WebElement checkboxGhete;
+    @FindBy(xpath = "/html/body/main/div/div/div/div[4]/div/div[1]/div/div/div/div[2]/div/ul/li[1]/div/a")
+    private WebElement checkboxFirstCategory;
+    @FindBy(xpath = "//*[@id=\"page_top_box_cat_cat_content\"]/div[2]/div/ul/li[1]/div/a/text()")
+    private WebElement labelCheckboxFirstCategory;
 
     private void addProductToFavourites(WebElement element) {
         navigationUtils.scrollToElement(element);
@@ -56,4 +58,9 @@ public class NoutatiPage {
         return Integer.parseInt(buttonAllFavouriteProducts.getAttribute("data-counter"));
     }
 
+    public String selectFirstCategoryFromFreshArrivalsPage() {
+        getDropdownCategorii().click();
+        getCheckboxFirstCategory().click();
+        return checkboxFirstCategory.getText();
+    }
 }
