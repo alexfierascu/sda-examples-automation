@@ -88,14 +88,13 @@ public class SimpleTests {
     @Test
     @Order(5)
     public void checkThatUserIsAbleToRemoveAFavouriteProductFromItsFavouritesList() throws InterruptedException {
-        WebDriverWait wait = new WebDriverWait(driver, 5);
         navigationUtils.navigateToNoutatiPage();
         noutatiPage.addMultipleProductsToFavourite();
         navigationUtils.navigateToFavouritePage();
         int counterFavouriteProducts = 4;
         assertEquals(noutatiPage.getNumberOfFavouriteProducts(), counterFavouriteProducts);
         favouritePage.deleteMultipleProductsFromFavouritesList();
-        wait.until(ExpectedConditions.visibilityOf(noutatiPage.getButtonAllFavouriteProducts()));
+        new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOf(noutatiPage.getButtonAllFavouriteProducts()));
         assertEquals(noutatiPage.getNumberOfFavouriteProducts(), 2);
     }
 

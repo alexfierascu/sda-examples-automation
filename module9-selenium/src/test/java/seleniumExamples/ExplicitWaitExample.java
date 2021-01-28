@@ -31,4 +31,9 @@ public class ExplicitWaitExample {
         WebDriverWait wait = new WebDriverWait(driver, 5);
         WebElement aliExpressLogo = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"header\"]/div/div[1]/div[2]")));
     }
+
+    @Test
+    public void checkThatUserIsAbleToOpenMainPageUsingExplicitWaitV2() {
+        new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//*[@id=\"header\"]/div/div[1]/div[2]")));
+    }
 }
