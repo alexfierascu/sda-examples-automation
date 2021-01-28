@@ -16,18 +16,32 @@ public class Factorial {
     }
 
     public static int factorialRecursive(int number) {
-        if (number == 0) {
+        if (number == 0 || number == 1) {
             return 1;
         }
         return number * factorialRecursive(number - 1);
     }
 
     public static int factorialIterative(int number) {
+        if (number == 0 || number == 1) {
+            return 1;
+        }
         int result = 1;
         while (number != 0) {
             result *= number;
             number--;
         }
         return result;
+    }
+
+    public static int factorialIterativeV2(int number) {
+        if (number == 0 || number == 1) {
+            return 1;
+        }
+        int rezultat = 1;
+        for (int i = number; i > 0; i--) {
+            rezultat = rezultat * i;
+        }
+        return rezultat;
     }
 }
