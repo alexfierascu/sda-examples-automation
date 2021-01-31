@@ -14,15 +14,18 @@ Otherwise just print the number.
 
 public class FooBarExercise {
     public static void main(String[] args) {
-        System.out.println("Introduceti un numar!");
-        Scanner scanner = new Scanner(System.in);
-        int numarTastatura = scanner.nextInt();
-        fooBar(numarTastatura);
+        fooBar(readNumberFromKeyboard());
     }
 
-    public static void fooBar(int n) {
+    private static int readNumberFromKeyboard() {
+        System.out.println("Introduceti un numar!");
+        Scanner scanner = new Scanner(System.in);
+        return scanner.nextInt();
+    }
+
+    private static void fooBar(int n) {
         if (n == 0) {
-            System.out.println("Numarul de la tastatura este 0");
+            System.out.println("Input a number bigger than 0!");
         }
         if (n > 0) {
             for (int i = 1; i <= n; i++) {
@@ -42,5 +45,38 @@ public class FooBarExercise {
             }
         }
         //todo - for a negative number
+        else {
+            for (int i = n; i < 0; i++) {
+                if (i % 3 == 0 && i % 5 == 0) {
+                    System.out.println("foobar");
+                } else {
+                    if (i % 3 == 0) {
+                        System.out.println("foo");
+                    } else {
+                        if (i % 5 == 0) {
+                            System.out.println("bar");
+                        } else {
+                            System.out.println(i);
+                        }
+                    }
+                }
+            }
+        }
+
+
+    }
+
+    private static void foobar2(int n) {
+        for (int i = 1; i <= n; i++) {
+            if (i % 3 == 0 && i % 5 == 0) {
+                System.out.println("FooBar");
+            } else if (i % 3 == 0) {
+                System.out.println("Foo");
+            } else if (i % 5 == 0) {
+                System.out.println("Bar");
+            } else {
+                System.out.println(i);
+            }
+        }
     }
 }
