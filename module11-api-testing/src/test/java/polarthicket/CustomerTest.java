@@ -64,7 +64,7 @@ public class CustomerTest {
     public void GETAllCustomersWithRequestSpecification() {
         given().
                 spec(requestSpecification).
-                when().then().statusCode(200);
+                when().get().then().statusCode(200);
     }
 
     @Test

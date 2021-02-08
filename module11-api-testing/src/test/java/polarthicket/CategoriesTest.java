@@ -67,7 +67,7 @@ public class CategoriesTest {
     public void GETAllCategoriesWithRequestSpecification() {
         given().
                 spec(requestSpecification).
-                when().then().statusCode(200);
+                when().get().then().statusCode(200);
     }
 
     @Test
