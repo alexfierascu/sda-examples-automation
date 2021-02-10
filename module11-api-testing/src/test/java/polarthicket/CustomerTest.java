@@ -19,6 +19,7 @@ import utils.ServerInformation;
 
 import static io.restassured.RestAssured.given;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class CustomerTest {
@@ -29,6 +30,7 @@ public class CustomerTest {
             baseUri(baseUrl).
             basePath(customerEndpoint).
             contentType(ContentType.JSON);
+
     private ResponseSpecBuilder responseSpecBuilder;
     private ResponseSpecification responseSpecification;
 
@@ -64,21 +66,21 @@ public class CustomerTest {
     public void GETAllCustomersWithRequestSpecification() {
         given().
                 spec(requestSpecification).
-                when().get().then().statusCode(200);
+                when().get().then().statusCode(200).log().all();
     }
 
     @Test
     @Order(4)
     public void createCustomerWithStringPayloadUsingRequestSpecification() {
         String customerPayload = "{\n" +
-                "    \"firstName\": \"Cristian\",\n" +
-                "    \"lastName\": \"Popescu\"\n" +
+                "  \"firstName\": \"Miron\",\n" +
+                "  \"lastName\": \"Iordache\"\n" +
                 "}";
 
 
         given().spec(requestSpecification).
                 body(customerPayload).post().
-                then().statusCode(201);
+                then().statusCode(201).log().all();
     }
 
     @Test
@@ -93,11 +95,12 @@ public class CustomerTest {
                 "    \"lastName\": \"Faina\"\n" +
                 "}";
 
-        Response response = given().when().contentType(ContentType.JSON)
+        Response responseAfterUserWasCreated = given().when().contentType(ContentType.JSON)
                 .body(customerPayload).post(URL.toString()).
                         then().statusCode(201).extract().response();
 
-        ResponseBody body = response.getBody();
+        ResponseBody body = responseAfterUserWasCreated.getBody();
+
         CustomerResponse customerResponse = body.as(CustomerResponse.class);
         String currentCustomerId = CustomerUtils.getIDFromURL(customerResponse);
         System.out.println("A customer with id " + currentCustomerId + " was created");
@@ -107,9 +110,9 @@ public class CustomerTest {
     @Order(6)
     public void checkPreviouslyCreatedCustomer() {
         String lastCreatedCustomerId = CustomerUtils.getLastCreatedCustomerId();
-        System.out.println("The last customer created had the id " + lastCreatedCustomerId);
+        System.out.println("The last customer created has the id " + lastCreatedCustomerId);
         given().when().get(baseUrl + customerEndpoint + lastCreatedCustomerId).then()
-                .statusCode(200);
+                .statusCode(200).log().all();
 
         CustomerResponse customerResponse = given().
                 when().
@@ -117,6 +120,7 @@ public class CustomerTest {
                 as(CustomerResponse.class);
         assertEquals(customerResponse.getFirstName(), "Cristian");
         assertEquals(customerResponse.getLastName(), "Faina");
+        assertTrue(customerResponse.getCustomerUrl().contains(lastCreatedCustomerId));
     }
 
     @Test
@@ -133,10 +137,10 @@ public class CustomerTest {
         } catch (JsonProcessingException e) {
             e.printStackTrace();
         }
-        given().when().contentType("application/json")
+        given().when().contentType(ContentType.JSON)
                 .body(updatedDataPayload).
                 put(baseUrl + customerEndpoint + lastCreatedCustomerId).
-                then().statusCode(200);
+                then().statusCode(200).log().all();
     }
 
     @Test
@@ -145,7 +149,7 @@ public class CustomerTest {
         String lastCreatedCustomerId = CustomerUtils.getLastCreatedCustomerId();
         System.out.println("The last customer created had the id " + lastCreatedCustomerId);
         given().when().get(baseUrl + customerEndpoint + lastCreatedCustomerId).then()
-                .statusCode(200);
+                .statusCode(200).log().all();
 
         CustomerResponse customerResponse = given().
                 when().

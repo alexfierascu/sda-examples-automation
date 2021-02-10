@@ -9,7 +9,9 @@ public class MyFirstSimpleTest {
     private static final String baseURL = "https://www.google.com/";
 
     @Test
-    public void verifyGETRequestOnAWebsite() {
+    public void verifyThatTheUserCanSuccessfullyAccessTheAUT() {
         given().when().get(baseURL).then().statusCode(200);
     }
+
+
 }
