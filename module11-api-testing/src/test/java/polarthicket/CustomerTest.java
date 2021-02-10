@@ -97,7 +97,7 @@ public class CustomerTest {
 
         Response responseAfterUserWasCreated = given().when().contentType(ContentType.JSON)
                 .body(customerPayload).post(URL.toString()).
-                        then().statusCode(201).extract().response();
+                        then().statusCode(201).log().all().extract().response();
 
         ResponseBody body = responseAfterUserWasCreated.getBody();
 
