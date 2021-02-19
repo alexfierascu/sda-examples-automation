@@ -1,0 +1,27 @@
+plugins {
+  id "au.com.dius.pact" version "4.1.7"
+}
+
+apply plugin: 'application'
+
+mainClassName = 'au.com.dius.pactworkshop.consumer.Consumer'
+version = '2'
+
+dependencies {
+  compile 'com.mashape.unirest:unirest-java:1.4.9'
+  compile 'ch.qos.logback:logback-core:1.2.3'
+  compile 'ch.qos.logback:logback-classic:1.2.3'
+  compile 'org.apache.commons:commons-lang3:3.7'
+
+  testCompile 'com.github.tomakehurst:wiremock:2.16.0'
+  testCompile 'au.com.dius.pact.consumer:junit:4.1.7'
+}
+
+pact {
+  publish {
+    pactBrokerUrl = project.pactBrokerUrl
+    pactBrokerUsername = project.pactBrokerUser
+    pactBrokerPassword = project.pactBrokerPassword
+    tags = ['test']
+  }
+}
