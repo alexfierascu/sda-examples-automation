@@ -1,0 +1,5 @@
+rootProject.name = 'module12-contract-testing'
+
+include 'consumer'
+include 'providers:dropwizard-provider'
+include 'providers:springboot-provider'

@@ -1,0 +1,34 @@
+plugins {
+    id 'java'
+}
+
+group 'org.example'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    jcenter()
+}
+
+dependencies {
+    compile 'org.slf4j:slf4j-api:1.7.22'
+    compile 'org.apache.commons:commons-lang3:3.7'
+
+    testCompile 'junit:junit:4.12'
+    testCompile 'org.mockito:mockito-core:2.18.0'
+    testCompile 'org.hamcrest:hamcrest-integration:1.3'
+}
+
+task copyPactToDropwizard(type: Copy) {
+  from "${project(':consumer').buildDir}/pacts"
+  into "${project(':providers:dropwizard-provider').buildDir}/pacts"
+}
+
+task copyPactToSpringboot(type: Copy) {
+  from "${project(':consumer').buildDir}/pacts"
+  into "${project(':providers:springboot-provider').buildDir}/pacts"
+}
+
+task publishWorkshopPact(dependsOn: [copyPactToDropwizard, copyPactToSpringboot],
+  description: 'Publish the pact file to the provider projects')
