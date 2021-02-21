@@ -70,7 +70,7 @@ public class DoctorTest {
   }
 
   @Test
-  public void checkThatADoctorCanIncreaseItsCredits() {
+  public void checkThatADoctorCanIncreaseHisNumberOfCredits() {
     doctor.setNumarCredite(9);
     int newNumberOfCredits = doctor.increaseNumberOfCredits(10);
     assertEquals(newNumberOfCredits, 19);
