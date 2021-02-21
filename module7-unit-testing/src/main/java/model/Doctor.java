@@ -6,42 +6,47 @@ import lombok.Setter;
 @Getter
 @Setter
 public class Doctor extends Human {
-    private String speciality;
-    private int salary;
-    private double bribe;
-    private int numarCredite;
 
-    public void diagnose() {
-        System.out.println("The doctor is diagnosing");
-    }
+  private String speciality;
+  private int salary;
+  private double bribe;
+  private int numarCredite;
 
-    @Override
-    public String toString() {
-        return super.toString() + " Doctor{" +
-                "speciality='" + speciality + '\'' +
-                '}';
-    }
+  public void diagnose() {
+    System.out.println("The doctor is diagnosing");
+  }
 
-    public double calculateTotalIncome() {
-        return salary + bribe;
-    }
+  @Override
+  public String toString() {
+    return super.toString() + " Doctor{" +
+        "speciality='" + speciality + '\'' +
+        '}';
+  }
 
-    public boolean checkBribeLevel() {
-        if (bribe <= 500) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+  public double calculateTotalIncome() {
+    return salary + bribe;
+  }
 
-    public String calculateProficiencyLevel() {
-        if (numarCredite <= 10) {
-            return "L1";
-        } else if (numarCredite > 10 && numarCredite <= 50) {
-            return "L2";
-        } else {
-            return "L3";
-        }
+  public boolean checkBribeLevel() {
+    if (bribe <= 500) {
+      return true;
+    } else {
+      return false;
     }
+  }
+
+  public String calculateProficiencyLevel() {
+    if (numarCredite <= 10) {
+      return "L1";
+    } else if (numarCredite > 10 && numarCredite <= 50) {
+      return "L2";
+    } else {
+      return "L3";
+    }
+  }
+
+  public int increaseNumberOfCredits(int numberOfCredits) {
+    return numarCredite + numberOfCredits;
+  }
 
 }
