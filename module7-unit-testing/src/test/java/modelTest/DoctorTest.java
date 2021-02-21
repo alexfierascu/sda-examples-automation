@@ -75,4 +75,11 @@ public class DoctorTest {
     int newNumberOfCredits = doctor.increaseNumberOfCredits(10);
     assertEquals(newNumberOfCredits, 19);
   }
+
+  @Test
+  public void checkThatADoctorCanIncreaseHisNumberOfCreditsTest2() {
+    doctor.setNumarCredite(10);
+    int newNumberOfCredits = doctor.increaseNumberOfCredits(10);
+    assertEquals(newNumberOfCredits, 20);
+  }
 }
