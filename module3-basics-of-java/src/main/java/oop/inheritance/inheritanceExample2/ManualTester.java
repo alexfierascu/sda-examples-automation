@@ -1,4 +1,4 @@
-package oop.inheritanceExample2;
+package oop.inheritance.inheritanceExample2;
 
 public class ManualTester extends Student{
 

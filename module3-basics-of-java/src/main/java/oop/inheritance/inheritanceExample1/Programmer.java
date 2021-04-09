@@ -1,4 +1,4 @@
-package oop.inheritance;
+package oop.inheritance.inheritanceExample1;
 
 public class Programmer extends Human{
 
